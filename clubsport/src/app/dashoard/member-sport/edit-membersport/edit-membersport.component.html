@@ -1,0 +1,82 @@
+<h2 mat-dialog-title class="card-header">ویرایش رویداد</h2>
+<form [formGroup]='ReciveMemberSport' (ngSubmit)="PostDataMemberSport(ReciveMemberSport)">
+  <mat-dialog-content>
+  <div class="card-header">
+    <h4>اطلاعات پایه -تعریف ورزشکار</h4>
+  </div>
+  <div class="card-body">
+    <div class="form-group">
+
+
+
+      
+      <label>نام ورزشکار</label>
+      <input type="text" class="form-control"  formControlName='FullName' [ngClass]="{ 'is-invalid':f.FullName.errors }">
+      <div class="invalid-feedback"   *ngIf='f.FullName.invalid else ReciveMemberSportFullName'  >
+
+        <div *ngIf='f.FullName.errors.required'>اضافه کردن نام و نام خانوادگی اجباریست</div>
+        <div *ngIf="f.FullName.errors.minlength">نام و نام خانوادگی بایستی بیشتر از5 کاراکتر باشد</div>
+
+
+        </div>
+
+
+
+        <ng-template class="valid-feedback" #ReciveMemberSportFullName>
+            <p style="color: green;">آفرین</p>
+      </ng-template>
+    </div>
+    <div class="form-group">
+      <label>کد ملی</label>
+      <input type="text" class="form-control"   formControlName='Ncode' [ngClass]="{ 'is-invalid':f.Ncode.errors }">
+      <div class="invalid-feedback"   *ngIf='f.Ncode.invalid else ReciveMemberSportFullName'  >
+
+        <div *ngIf='f.Ncode.errors.required'>اضافه کردن کد ملی اجباریست</div>
+
+        <div *ngIf="f.Ncode.errors.minlength">کد ملی خانوادگی بایستی 10 کاراکتر باشد</div>
+        <div *ngIf="f.Ncode.errors.pattern">
+          کد ملی صحیح نمی باشد
+          </div>  
+
+        </div>
+
+
+
+
+    </div>
+
+ 
+      <br>
+   
+      <div class="invalid-feedback">
+
+      </div>
+    </div>
+    <br>
+    <div>
+    <div class="form-group">
+      <label>تصویر</label>
+      <input type="file"
+      (change)="onFileChange($event)"
+       class="form-control is-invalid"
+       id="Photo"
+         formControlName='Photo'>
+
+         <img [src]="imageSrc" *ngIf="imageSrc" style="height: 150px; width:250px">
+      <!-- <div class="invalid-feedback">
+
+      </div> -->
+
+    </div>
+
+  </div>
+
+
+  <div class="card-footer text-right">
+    <button class="btn btn-primary">ذخیره</button>
+  </div>
+</mat-dialog-content>
+</form>
+<mat-dialog-actions>
+  <button class="mat-raised-button"  mat-button mat-dialog-close>لغو</button>
+</mat-dialog-actions>

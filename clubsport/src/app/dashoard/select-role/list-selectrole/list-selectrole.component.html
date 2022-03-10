@@ -1,0 +1,62 @@
+
+<div *ngIf="isDone ==true;else elseBlock" >
+  <div class="loaders"></div>
+</div>
+<ng-template #elseBlock>
+
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h4>اعضا</h4>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-striped" id="table-1">
+              <thead>
+                <tr>
+                  <th class="text-center">
+                  تعداد
+                  </th>
+                  <th>نام اعضا</th>
+                  <th> نوع کاربری</th>
+
+
+
+                  <th>  </th>
+
+
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of SelectRole; let i = index">
+                  <td>
+                   {{i+1}}
+                  </td>
+                  <td *ngFor="let Member of item.M_Sport; let i = index">
+                  {{Member.Ncode}}
+                  </td>
+                  <td  >
+                  {{item.Role}}
+                  </td>
+
+
+
+                  <td>
+                    <a (click)="onEditEvent(item.Id)" style="cursor: pointer;" class="badge badge-warning badge-shadow">ویرایش</a>
+                    <a (click)="onDeleteSelectRole(item.Id)" style="cursor: pointer;" class="badge badge-info badge-shadow">حذف</a>
+
+                  </td>
+
+
+                  <!-- <td><a href="#" class="btn btn-primary">جزئیات</a></td> -->
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+

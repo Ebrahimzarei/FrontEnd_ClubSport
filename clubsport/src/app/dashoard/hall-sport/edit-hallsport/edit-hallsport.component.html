@@ -1,0 +1,57 @@
+<h2 mat-dialog-title class="card-header">ویرایش رویداد</h2>
+<form [formGroup]='ReciveHallSport' (ngSubmit)="PostDataHallSport(ReciveHallSport)">
+  <mat-dialog-content>
+  <div class="card-header">
+    <h4>اطلاعات پایه -تعریف سالن ورزشی</h4>
+  </div>
+  <div class="card-body">
+    <div class="form-group">
+      <label>نام سالن</label>
+ 
+      <input type="text" class="form-control" formControlName='Name' [ngClass]="{ 'is-invalid':f.Name.errors }"    >
+      <div class="invalid-feedback"   *ngIf='f.Name.invalid else ReciveName'  >
+
+        <div *ngIf='f.Name.errors.required'>اضافه کردن نام سالن اجباریست</div>
+        <div *ngIf="f.Name.errors.minlength">نام سالن بایستی بزرگتر از5 کاراکتر باشد</div>
+
+
+        </div>
+
+
+
+        <ng-template class="valid-feedback" #ReciveName>
+            <p style="color: green;">آفرین</p>
+      </ng-template>
+    </div>
+    <div class="form-group mb-0">
+      <label>انتخاب ورزشکار</label>
+      <br>
+      <div >
+      <div  style=" cursor:pointer;">
+
+        <select formControlName='MemberSportRef' class="form-control  form-select form-select-lg mb-3"  aria-label=".form-select-lg example">
+         
+       <option [ngValue]="FilterMember.Id"  selected>{{FilterMember.FullName}}</option> 
+         
+          <option  *ngFor="let MemberSportArray of M_Sport" [ngValue]="MemberSportArray.Id">{{MemberSportArray.FullName}}</option>
+        
+        </select>
+           
+      
+      </div>
+      </div>
+      <div class="invalid-feedback">
+
+      </div>
+    </div>
+
+  
+  </div>
+  <div class="card-footer text-right">
+    <button class="btn btn-primary">ذخیره</button>
+  </div>
+</mat-dialog-content>
+</form>
+<mat-dialog-actions>
+  <button class="mat-raised-button"  mat-button mat-dialog-close>لغو</button>
+</mat-dialog-actions>

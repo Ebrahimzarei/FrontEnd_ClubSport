@@ -1,0 +1,114 @@
+
+<form [formGroup]='ReciveFieldSport' (ngSubmit)="PostDataField(ReciveFieldSport)">
+  <div class="card-header">
+    <h4>اطلاعات پایه -تعریف رشته ورزشی</h4>
+  </div>
+  <div class="card-body">
+    <div class="form-group">
+      <label>نام رشته</label>
+      <input type="text"  formControlName='NameField' class="form-control" [ngClass]="{ 'is-invalid':f.NameField.errors }"  >
+      <div class="invalid-feedback"   *ngIf='f.NameField.invalid else ReciveNameField'  >
+
+        <div *ngIf='f.NameField.errors.required'>اضافه کردن نام رشته اجباریست</div>
+        <div *ngIf="f.NameField.errors.minlength">نام رشته بایستی بیشتر از 4 کاراکتر باشد</div>
+
+
+        </div>
+
+
+
+        <ng-template class="valid-feedback" #ReciveNameField>
+            <p style="color: green;">آفرین</p>
+      </ng-template>
+    </div>
+    <div class="form-group">
+      <label>کد رشته</label>
+      <input type="text"  formControlName='CodeSportField' class="form-control" [ngClass]="{ 'is-invalid':f.CodeSportField.errors }"  >
+      <div class="invalid-feedback"   *ngIf='f.CodeSportField.invalid else ReciveNameField'  >
+
+        <div *ngIf='f.CodeSportField.errors.required'>اضافه کردن کد رشته اجباریست</div>
+        <div *ngIf="f.CodeSportField.errors.minlength">کد رشته بایستی بزرگتر از4 کاراکتر باشد</div>
+        <div *ngIf="f.CodeSportField.errors.pattern">
+          کد رشته صحیح نمی باشد
+          </div>  
+
+        </div>
+
+<!-- 
+        <div class="form-group mb-1">
+          <label>برنامه ورزشی</label>
+          <br>
+          <div class="dropdown d-inline mr-2">
+            <div class="btn btn-success  " style="width: 610px; cursor:pointer;">
+  
+           
+            <ng-select bindLabel="name"
+          
+            placeholder="برنامه ورزشی"
+            appendTo="ProgramList"
+            multiple="true"
+            [searchable]="true" 
+            [clearable]="true"
+            [(ngModel)]="ProgramList">
+            <ng-option [value]="item.Id"   *ngFor="let item of ProgramList">
+              <div class="dropdown-item SelectSize"> </div>
+                {{item.NameProgram}}
+            </ng-option>
+            </ng-select>
+          </div>
+        </div>
+         
+        
+        </div> -->
+  
+
+        <!-- <div class="form-group mb-1">
+          <label>رویداد ورزشی</label>
+          <br>
+          <div class="dropdown d-inline mr-2">
+            <div class="btn btn-success  " style="width: 610px; cursor:pointer;">
+  
+           
+            <ng-select bindLabel="name"
+          
+            placeholder="رویداد ورزشی"
+            appendTo="EventList"
+            multiple="true"
+            [searchable]="true" 
+            [clearable]="true"
+            [(ngModel)]="EventList">
+            <ng-option [value]="item.Id"   *ngFor="let item of EventList">
+              <div class="dropdown-item SelectSize"> </div>
+                {{item.NameEvent}}
+            </ng-option>
+            </ng-select>
+          </div>
+        </div>
+         
+        
+        </div> -->
+    </div>
+
+    <!-- <div class="form-group mb-0">
+      <label>مربی</label>
+      <input type="text"  formControlName='NameCoach' class="form-control" [ngClass]="{ 'is-invalid':f.NameCoach.errors }" >
+      <div class="invalid-feedback"   *ngIf='f.NameCoach.invalid else ReciveNameField'  >
+
+        <div *ngIf='f.NameCoach.errors.required'>اضافه کردن نام مربی اجباریست</div>
+        <div *ngIf="f.NameCoach.errors.minlength">نام مربی بایستی بزرگتر از5 کاراکتر باشد</div>
+
+
+        </div>
+
+
+
+
+    </div> -->
+  </div>
+  <div class="card-footer text-right">
+    <button class="btn btn-primary">ذخیره</button>
+  </div>
+</form>
+<div class="section-body">
+ <app-list-fieldsport></app-list-fieldsport>
+</div>

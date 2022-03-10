@@ -1,0 +1,86 @@
+<form [formGroup]='ReciveServicesSport' (ngSubmit)="PostDataServicesSport(ReciveServicesSport)">
+  <div class="card-header">
+    <h4>عملیات- خدمات ورزشی</h4>
+  </div>
+
+  <div class="card-body">
+    <div class="form-group">
+      <label>نام خدمات ورزشی</label>
+      <input type="text" class="form-control"   formControlName="ServicesName" >
+      <!-- <div class="invalid-feedback"   *ngIf='f.NameProgramSport.invalid else ReciveServicesName'  >
+
+        <div *ngIf='f.ServicesName.errors.required'>اضافه کردن خدمات ورزشی اجباریست</div>
+        <div *ngIf="f.ServicesName.errors.minlength">خدمات ورزشی باید بیشتر از 7 کاراکتر باشد</div>
+
+
+        </div> -->
+
+
+
+        <ng-template class="valid-feedback" #ReciveServicesName>
+            <p style="color: green;">آفرین</p>
+      </ng-template>
+    </div>
+
+
+    <div class="form-group mb-0">
+      <label>انتخاب سالن ورزشی </label>
+     <br>
+     <div >
+ 
+  
+      <div >
+        <div  style=" cursor:pointer;">
+  
+          <select formControlName='HallSportArray' class="form-control  form-select form-select-lg mb-3"  aria-label=".form-select-lg example">
+           
+            <option [ngValue]="null" disabled>انتخاب کنید</option>
+          
+            <option selected *ngFor="let HallSportArray of H_Sport" [ngValue]="HallSportArray.Id">
+            
+                {{HallSportArray.Name}}
+
+             
+            </option>
+      
+          </select>
+             
+        
+    
+        </div>
+     
+    </div>
+    </div>
+   
+    </div>
+
+    </div>
+    <br>
+
+
+
+
+  <div class="card-body">
+    <div class="form-group">
+      <label> جزییات</label>
+      <input type="text" class="form-control"  formControlName="ServicesSportDetails" >
+
+      <!-- <div class="invalid-feedback"   *ngIf='f.ServicesSportDetails.invalid else ReciveServicesSportDetails'  >
+
+        <div *ngIf='f.ServicesSportDetails.errors.required'>اضافه کردن جزییات  اجباریست</div>
+        <div *ngIf="f.ServicesSportDetails.errors.minlength">جزییات باید بیشتر از 7 کاراکتر باشد</div>
+
+
+        </div> -->
+
+
+
+        <ng-template class="valid-feedback" #ReciveServicesSportDetails>
+            <p style="color: green;">آفرین</p>
+      </ng-template>
+    </div>
+  </div>
+  <div class="card-footer text-right">
+    <button class="btn btn-primary">ذخیره</button>
+  </div>
+ </form>

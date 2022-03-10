@@ -1,0 +1,79 @@
+
+<div *ngIf="isDone ==true;else elseBlock" >
+  <div class="loaders"></div>
+</div>
+<ng-template #elseBlock>
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        <h4> اعضا ورزشی(ورزشکار)</h4>
+      </div>
+      <div class="card-body">
+        <a  style="cursor: pointer;" class="badge badge-shadow badge-info"
+        target="_blank"
+                (click)="openPDF()" >PDF</a>
+
+                <a  style="cursor: pointer;" class="badge badge-shadow badge-info"
+                target="_blank"
+                        (click)=" OnReport()" >چاپ</a>
+        <div class="table-responsive">
+        <div class="table-responsive" id="htmlData">
+          <table class="table table-striped" id="table-1">
+            <thead>
+              <tr>
+                <th class="text-center">
+                تعداد
+                </th>
+                <th>نام ورزشکار</th>
+                <th>کد ملی</th>
+
+                <th>تصویر</th>
+               
+                <th data-html2canvas-ignore="true">  </th>
+                <th data-html2canvas-ignore="true">  </th>
+
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of MemberSport; let i = index">
+                <td>
+                  {{i+1}}
+                </td>
+                <td>
+              
+                 {{item.FullName}}
+                </td>
+                <td  >
+                  {{item.Ncode}}
+                </td>
+                <td  >
+                  <img alt="تصویر" [src]="''+item.Photo" width="35" width="35">
+                  </td>
+                
+
+                <td>
+                  <a data-html2canvas-ignore="true" (click)="onEditEvent(item.Id)" style="cursor: pointer;" class="badge badge-warning badge-shadow">ویرایش</a>
+
+                </td>
+                <td>
+                  <a data-html2canvas-ignore="true" (click)="OnDeleteMemberSport(item.Id)"  style="cursor: pointer;" class="badge badge-info badge-shadow">حذف</a>
+
+                </td>
+
+
+
+                <!-- <td><a href="#" class="btn btn-primary">جزئیات</a></td> -->
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</ng-template>
+
+

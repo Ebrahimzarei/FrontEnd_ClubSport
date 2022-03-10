@@ -1,0 +1,48 @@
+<h2 mat-dialog-title class="card-header">ویرایش رویداد</h2>
+<form [formGroup]='ReciveFieldSport' (ngSubmit)="PostDataField(ReciveFieldSport)">
+  <mat-dialog-content>
+  <div class="card-header">
+    <h4>اطلاعات پایه -تعریف رشته ورزشی</h4>
+  </div>
+  <div class="card-body">
+    <div class="form-group">
+      <label>نام رشته</label>
+      <input type="text"  formControlName='NameField' class="form-control" [ngClass]="{ 'is-invalid':f.NameField.errors }"  >
+      <div class="invalid-feedback"   *ngIf='f.NameField.invalid else ReciveNameField'  >
+
+        <div *ngIf='f.NameField.errors.required'>اضافه کردن نام رشته اجباریست</div>
+        <div *ngIf="f.NameField.errors.minlength">نام رشته بایستی بیشتر از 4 کاراکتر باشد</div>
+
+
+        </div>
+
+
+
+        <ng-template class="valid-feedback" #ReciveNameField>
+            <p style="color: green;">آفرین</p>
+      </ng-template>
+    </div>
+    <div class="form-group">
+      <label>کد رشته</label>
+      <input type="text"  formControlName='CodeSportField' class="form-control" [ngClass]="{ 'is-invalid':f.CodeSportField.errors }"  >
+      <div class="invalid-feedback"   *ngIf='f.CodeSportField.invalid else ReciveNameField'  >
+
+        <div *ngIf='f.CodeSportField.errors.required'>اضافه کردن کد رشته اجباریست</div>
+        <div *ngIf="f.CodeSportField.errors.minlength">کد رشته بایستی بزرگتر از4 کاراکتر باشد</div>
+        <div *ngIf="f.CodeSportField.errors.pattern">
+          کد رشته صحیح نمی باشد
+          </div>  
+
+        </div>
+    </div>
+  </div>
+  <div class="card-footer text-right">
+    <button class="btn btn-primary">ذخیره</button>
+  </div>
+</mat-dialog-content>
+</form>
+
+
+<mat-dialog-actions>
+  <button class="mat-raised-button"  mat-button mat-dialog-close>لغو</button>
+</mat-dialog-actions>

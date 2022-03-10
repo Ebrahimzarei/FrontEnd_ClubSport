@@ -1,0 +1,65 @@
+
+<div *ngIf="isDone ==true;else elseBlock" >
+  <div class="loaders"></div>
+</div>
+<ng-template #elseBlock>
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        <h4>سالن ورزشی</h4>
+      </div>
+      <div class="card-body">
+        <a  style="cursor: pointer;" class="badge badge-shadow badge-info"
+        target="_blank"
+                (click)=" openPDF()" >PDF</a>
+                <a  style="cursor: pointer;" class="badge badge-shadow badge-info"
+                target="_blank"
+                        (click)="OnReport()" >چاپ</a>
+        <div class="table-responsive" id="htmlData">
+          <table class="table table-striped" id="table-1">
+            <thead>
+              <tr>
+                <th class="text-center">
+                تعداد
+                </th>
+                <th>نام سالن ورزشی</th>
+               
+
+
+
+                <th>  </th>
+
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of HallSport; let i = index">
+                <td>
+                 {{i+1}}
+                </td>
+                <td>
+                  {{item.Name}}
+                </td>
+              
+
+
+
+                <td>
+                  <a data-html2canvas-ignore (click)="onEditEvent(item.Id)" style="cursor: pointer;" class="badge badge-warning badge-shadow">ویرایش</a>
+                  <a data-html2canvas-ignore (click)="OnDeleteHall(item.Id)" style="cursor: pointer;" class="badge badge-info badge-shadow">حذف</a>
+                  <!-- <a data-html2canvas-ignore href="#" style="cursor: pointer;" class="badge badge-shadow badge-info">بیشتر</a> -->
+                </td>
+
+
+                <!-- <td><a href="#" class="btn btn-primary">جزئیات</a></td> -->
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</ng-template>
+

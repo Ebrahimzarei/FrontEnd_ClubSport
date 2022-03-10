@@ -1,0 +1,149 @@
+
+<h2 mat-dialog-title class="card-header">ویرایش رویداد</h2>
+
+
+<form [formGroup]="ReciveEventSport" (ngSubmit)="PostData(ReciveEventSport)">
+<mat-dialog-content>
+  <div class="card-body">
+    <div class="form-group">
+      <label>نام رویداد</label>
+ 
+      <input type="text" formControlName='NameEvent' class="form-control"  [ngClass]="{ 'is-invalid':f.NameEvent.errors }"   >
+     
+     
+
+    </div>
+  </div>
+  <div class="card-body">
+    <label >برنامه ورزشی</label>
+  <br>
+  <div  style=" cursor:pointer;">
+  
+    <select formControlName='ProgramSportArray' class="form-control  form-select form-select-lg mb-3"  aria-label=".form-select-lg example">
+     
+      <option [ngValue]="null" disabled>انتخاب کنید</option>
+    
+      <option selected *ngFor="let ProgramSportArray of P_Sport" [ngValue]="ProgramSportArray.Id">
+      
+          {{ProgramSportArray.NameProgram}}
+
+       
+      </option>
+
+    </select>
+       
+  
+
+  </div>
+
+  </div>
+  <div class="card-body">
+  <label>رشته ورزشی</label>
+    <div class="form-group">
+
+      <div  style=" cursor:pointer;">
+  
+        <select formControlName='FieldSportArray' class="form-control  form-select form-select-lg mb-3"  aria-label=".form-select-lg example">
+         
+          <option [ngValue]="null" disabled>انتخاب کنید</option>
+        
+          <option selected *ngFor="let FieldSportArray of F_Sport" [ngValue]="FieldSportArray.Id">
+          
+              {{FieldSportArray.NameField}}
+
+           
+          </option>
+    
+        </select>
+           
+      
+  
+      </div>
+     
+     
+    </div>
+  </div>
+  <div class="card-body">
+    <label>سالن ورزشی</label>
+    <div class="form-group ">
+
+      <div class="dropdown d-inline mr-2">
+        <div  style=" cursor:pointer;">
+  
+          <select formControlName='HallSportArray' class="form-control  form-select form-select-lg mb-3"  aria-label=".form-select-lg example">
+           
+            <option [ngValue]="null" disabled>انتخاب کنید</option>
+          
+            <option selected *ngFor="let HallSportArray of H_Sport" [ngValue]="HallSportArray.Id">
+            
+                {{HallSportArray.Name}}
+  
+             
+            </option>
+      
+          </select>
+             
+        
+    
+        </div>
+
+      </div>
+    
+    
+    </div>
+  </div>
+    <div class="card-body">
+      <div class="form-group">
+        <label> از تاریخ</label>
+        <input  type="text" class="form-control is-valid" formControlName="FromDate"    />
+
+
+
+      
+       
+
+
+        <div class="form-group">
+          <label> تا تاریخ</label>
+          <input type="text" class="form-control is-valid"  id="ToDate" formControlName="ToDate" value="" >
+
+         
+      </div>
+
+  </div>
+</div>
+
+
+<div class="card-body">
+  <div class="form-group">
+    <label> نام داور</label>
+    <input type="text" class="form-control is-valid" formControlName="NameCoach" [ngClass]="{ 'is-invalid':f.NameCoach.errors }" >
+   
+
+
+    <div class="card-footer text-right">
+      <button class="btn btn-primary" style="cursor: pointer;" type="submit" value="ذخیره">
+      ذخیره
+      </button>
+      </div>
+
+
+
+
+
+
+
+</div>
+</div>
+    </mat-dialog-content>
+
+
+  </form>
+
+
+
+
+
+<mat-dialog-actions>
+    <button class="mat-raised-button"  mat-button mat-dialog-close>لغو</button>
+</mat-dialog-actions>

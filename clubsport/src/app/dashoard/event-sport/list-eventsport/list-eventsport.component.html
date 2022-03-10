@@ -1,0 +1,98 @@
+ 
+<div *ngIf="isDone ==true;else elseBlock" >
+  <div class="loaders"></div>
+</div>
+
+
+<ng-template #elseBlock>
+
+ 
+
+
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h4>رویداد ورزشی</h4>
+        </div>
+
+        <div class="card-body">
+ 
+
+          <a  style="cursor: pointer; " class="badge badge-shadow badge-info"
+  target="_blank"
+          (click)="PrintEventSport()" >PDF</a>
+          <a  style="cursor: pointer; " class="badge badge-shadow badge-info"
+          target="_blank"
+                  (click)="ReportEventSport()" >چاپ</a>
+          <div class="table-responsive" id="htmlData">
+            <table class="table table-striped" id="table-1">
+              <thead>
+                <tr>
+                  <th class="text-center">
+                  تعداد
+                  </th>
+                  <th>نام رویداد</th>
+                
+                  <th>نتیجه رویداد</th>
+                  <th>از تاریخ</th>
+                  <th>تا تاریخ</th>
+                  <th data-html2canvas-ignore="true">  </th>
+
+                  <th data-html2canvas-ignore="true">  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of EventList; let i = index">
+                
+                  <td  >
+                   {{i+1}}
+                
+                  </td>
+                  <td>
+                   
+                    {{item.NameEvent}}
+                  </td>
+              
+                    <td>
+                 
+                   {{item.EventResult}}
+                  </td>
+                
+                    <td>
+                      {{item.FromDate}}
+               
+                    </td>
+                  
+                      <td>
+                        {{item.ToDate}}
+                    
+                      </td>
+                    
+
+                  <td>
+                    <a data-html2canvas-ignore="true" data-toggle="modal" data-target="#exampleModal" (click)="onEditEvent(item.Id)" style="cursor: pointer;" class="badge badge-info badge-shadow">ویرایش</a>
+
+                  </td>
+                  <td>
+                    <a data-html2canvas-ignore="true" (click)="onDeleteEvent(item.Id)" style="cursor: pointer;" class="badge badge-info badge-shadow">حذف</a>
+
+                  </td>
+
+
+                  <!-- <td><a href="#" class="btn btn-primary">جزئیات</a></td> -->
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+</ng-template>
+
+
+

@@ -1,0 +1,44 @@
+<h2 mat-dialog-title class="card-header">ویرایش رویداد</h2>
+<form [formGroup]='ReciveRoleAccess' (ngSubmit)="PostDataRoleAccess(ReciveRoleAccess)">
+  <mat-dialog-content>
+  <div class="card-header">
+    <h4>عملیات-سطح دسترسی کاربران</h4>
+  </div>
+
+
+
+
+    <div class="form-group mb-0">
+      <label>انتخاب اعضا</label>
+      <select class="btn btn-success  " style="width: 500px; height: 50px; cursor:pointer;"   appDropdown formControlName="MemberRegister">
+        <option value="none" selected="selected" disabled class="dropdown-item SelectSize">
+          انتخاب کنید
+           </option>
+        <option class="dropdown-item SelectSize" *ngFor="let value of options" [ngValue]="value">{{value}}</option>
+      </select>
+      </div>
+      <div class="invalid-feedback">
+
+      </div>
+      <label>نوع کاربری</label>
+      <div class="dropdown d-inline mr-2">
+        <select class="btn btn-success  " style="width: 500px; height: 50px; cursor:pointer;"   appDropdown formControlName="TypeMemberRegister">
+          <option value="none" selected="selected" disabled class="dropdown-item SelectSize">
+            انتخاب کنید
+             </option>
+          <option class="dropdown-item SelectSize" *ngFor="let value of options" [ngValue]="value">{{value}}</option>
+        </select>
+      </div>
+      <div class="invalid-feedback">
+
+      </div>
+
+
+    <div class="card-footer text-right">
+      <button type="submit" class="btn btn-primary">ذخیره</button>
+     </div>
+    </mat-dialog-content>
+  </form>
+  <mat-dialog-actions>
+    <button class="mat-raised-button"  mat-button mat-dialog-close>لغو</button>
+  </mat-dialog-actions>

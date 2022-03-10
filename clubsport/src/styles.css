@@ -1,0 +1,60 @@
+/* You can add global styles to this file, and also import other style files */
+/* styles.scss */
+/* You can add global styles to this file, and also import other style files */
+
+@import "https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap";
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+/* @import "~@ng-select/ng-select/themes/ant.design.theme.css"; */
+ /* @import "~@ng-select/ng-select/themes/material.theme.css";  */
+/* @import "~@ng-select/ng-select/themes/ant.design.theme.css"; */
+ 
+
+html, body { height: 100%; }
+ 
+
+
+
+ ng-select.ng-invalid.ng-touched .ng-select-container {
+  border-color: #dc3545;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 0 3px #b1222e;
+}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.SelectSize {
+  font-size:18px;
+  color: rgb(185, 40, 21);
+  font-weight: bold;
+
+ }
+ .example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+
+}
+.loaders {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid blue;
+  border-right: 16px solid green;
+  border-bottom: 16px solid red;
+  border-left: 16px solid pink;
+  width: 60px;
+  height: 60px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+

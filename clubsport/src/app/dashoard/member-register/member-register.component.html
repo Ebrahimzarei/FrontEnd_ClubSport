@@ -1,0 +1,149 @@
+<form [formGroup]='MemberRegister' (ngSubmit)="PostDataMemberRegister(MemberRegister)">
+  <div class="card-header">
+    <h4>اطلاعات پایه -تعریف اعضا</h4>
+  </div>
+  <div class="card-body">
+    <div class="form-group">
+      <label>نام و نام خانوادگی</label>
+      <input type="text" formControlName='FullName' class="form-control" [ngClass]="{ 'is-invalid':f.FullName.errors }">
+      <div class="invalid-feedback"   *ngIf='f.FullName.invalid else ReciveMemberRegFullName'  >
+
+        <div *ngIf='f.FullName.errors.required'>اضافه کردن نام و نام خانوادگی اجباریست</div>
+        <div *ngIf="f.FullName.errors.minlength">نام و نام خانوادگی بایستی بیشتر از5 کاراکتر باشد</div>
+
+
+        </div>
+
+
+
+        <ng-template class="valid-feedback" #ReciveMemberRegFullName>
+            <p style="color: green;">آفرین</p>
+      </ng-template>
+    </div>
+    <div class="form-group">
+      <label>کد ملی</label>
+      <input type="text" class="form-control " formControlName='Natinalcode' [ngClass]="{ 'is-invalid':f.Natinalcode.errors }">
+      <div class="invalid-feedback"   *ngIf='f.Natinalcode.invalid else ReciveMemberRegFullName'  >
+
+        <div *ngIf='f.Natinalcode.errors.required'>اضافه کردن کد ملی اجباریست</div>
+       <div *ngIf="f.Natinalcode.errors.minlength">کد ملی باید بایستی 10 کاراکتر باشد</div>
+
+      <div *ngIf="f.Natinalcode.errors.pattern">
+        کد ملی صحیح نمی باشد
+        </div>  
+
+
+        <ng-template class="valid-feedback" #ReciveMemberRegCodeMelli>
+            <p style="color: green;">آفرین</p>
+      </ng-template>
+      <!-- <div *ngIf="CodeMelli.errors && isValidFormSubmitted != null && !isValidFormSubmitted" [ngClass] = "'is-invalid'"> 
+           
+        <div *ngIf="CodeMelli.errors.pattern">
+       کد ملی صحیح نمی باشد
+        </div> 
+      </div> -->
+    </div>
+    <div class="form-group">
+      <label>نام پدر</label>
+      <input type="text" formControlName='FatherName' class="form-control" [ngClass]="{ 'is-invalid':f.FatherName.errors }">
+      <div class="invalid-feedback"   *ngIf='f.FatherName.invalid else ReciveMemberRegNameFather'  >
+
+        <div *ngIf='f.FatherName.errors.required'>اضافه کردن نام پدر اجباریست</div>
+        <div *ngIf="f.FatherName.errors.minlength">نام پدر باید بیشتر از 3 کاراکتر باشد</div>
+
+
+        </div>
+
+
+
+        <ng-template class="valid-feedback" #ReciveMemberRegNameFather>
+            <p style="color: green;">آفرین</p>
+      </ng-template>
+    </div>
+    <div class="form-group">
+      <label>نام کاربری</label>
+      <input type="text" formControlName='UserName' class="form-control" [ngClass]="{ 'is-invalid':f.UserName.errors }">
+      <div class="invalid-feedback"   *ngIf='f.UserName.invalid else ReciveMemberRegUserName'  >
+
+        <div *ngIf='f.UserName.errors.required'>اضافه کردن نام کاربری اجباریست</div>
+        <div *ngIf="f.UserName.errors.minlength">نام کاربری باید بیشتر از 3 کاراکتر باشد</div>
+
+
+        </div>
+
+
+
+        <ng-template class="valid-feedback" #ReciveMemberRegUserName>
+            <p style="color: green;">آفرین</p>
+      </ng-template>
+    </div>
+    <div class="form-group">
+      <label> رمز عبور</label>
+      <input type="text" formControlName='Password' class="form-control" [ngClass]="{ 'is-invalid':f.Password.errors }">
+      <div class="invalid-feedback"   *ngIf='f.Password.invalid else ReciveMemberRegPassword'  >
+
+        <div *ngIf='f.Password.errors.required'>اضافه کردن رمز عبور اجباریست</div>
+        <div *ngIf="f.Password.errors.minlength">رمز عبور باید بیشتر از سه کاراکتر باشد</div>
+
+
+        </div>
+
+
+
+        <ng-template class="valid-feedback" #ReciveMemberRegPassword>
+            <p style="color: green;">آفرین</p>
+      </ng-template>
+    </div>
+    <div class="form-group mb-0">
+      <label>تصویر</label>
+      <input type="file"
+      (change)="onFileChange($event)"
+       class="form-control"
+       id="Photo"
+         formControlName='Photo'>
+
+         <img [src]="imageSrc" *ngIf="imageSrc" style="height: 150px; width:250px">
+      <div class="invalid-feedback">
+
+      </div>
+     
+    </div>
+    <div class="card-body">
+   <div class="form-group">
+      <label> سطح دسترسی</label>
+        <br><br>
+      
+   
+          
+        <div class="form-control">
+          <input id="male"  type="radio"  class="custom-control-input" value="Admin" name="Role" formControlName="Role" >
+          <label class="custom-control-label" style="margin-right: 30px;"   for="male">کاربر ویژه</label>
+       </div>
+       <br>
+    
+       <div class="form-control"> 
+          <input id="female" dir="rtl" type="radio" class="custom-control-input" value="User" name="Role" formControlName="Role">
+          <label class="custom-control-label" style="margin-right: 30px;" for="female">کاریر معمولی</label>
+       </div>
+         
+      </div > 
+  
+    
+    
+  
+  </div>
+
+  </div>
+  <div class="card-footer text-right">
+    <button class="btn btn-primary">ذخیره</button>
+  </div>
+  </div>
+</form>
+ <!-- </form>  -->
+<div class="section-body">
+ <app-list-memberregister>
+   
+ </app-list-memberregister>
+</div>
+<!-- JS Libraies -->
+

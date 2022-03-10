@@ -1,0 +1,152 @@
+<h2 mat-dialog-title class="card-header">ویرایش رویداد</h2>
+<form [formGroup]="ReciveMember" (ngSubmit)="PostDataMemberRegister(ReciveMember)">
+  <mat-dialog-content>
+  <div class="card-header">
+    <h4>اطلاعات پایه -تعریف اعضا</h4>
+  </div>
+  <div class="card-body">
+    <div class="form-group">
+      <label>نام و نام خانوادگی</label>
+      <input type="text" formControlName='FullName' class="form-control" [ngClass]="{ 'is-invalid':form.FullName.errors }">
+      <div class="invalid-feedback"   *ngIf='form.FullName.invalid else ReciveMemberRegFullName'  >
+
+        <div *ngIf='form.FullName.errors.required'>اضافه کردن نام و نام خانوادگی اجباریست</div>
+        <div *ngIf="form.FullName.errors.minlength">نام و نام خانوادگی بایستی بیشتر از5 کاراکتر باشد</div>
+
+
+        </div>
+
+
+
+        <ng-template class="valid-feedback" #ReciveMemberRegFullName>
+            <p style="color: green;">آفرین</p>
+      </ng-template>
+    </div>
+    <div class="form-group">
+      <label>کد ملی</label>
+      <input type="text" class="form-control " formControlName='Natinalcode' [ngClass]="{ 'is-invalid':form.Natinalcode.errors }">
+      <div class="invalid-feedback"   *ngIf='form.Natinalcode.invalid else ReciveMemberRegFullName'  >
+
+        <div *ngIf='form.Natinalcode.errors.required'>اضافه کردن کد ملی اجباریست</div>
+       <div *ngIf="form.Natinalcode.errors.minlength">کد ملی باید بایستی 10 کاراکتر باشد</div>
+
+      <div *ngIf="form.Natinalcode.errors.pattern">
+        کد ملی صحیح نمی باشد
+        </div>  
+
+
+        <ng-template class="valid-feedback" #ReciveMemberRegCodeMelli>
+            <p style="color: green;">آفرین</p>
+      </ng-template>
+      <!-- <div *ngIf="CodeMelli.errors && isValidFormSubmitted != null && !isValidFormSubmitted" [ngClass] = "'is-invalid'"> 
+           
+        <div *ngIf="CodeMelli.errors.pattern">
+       کد ملی صحیح نمی باشد
+        </div> 
+      </div> -->
+    </div>
+    <div class="form-group">
+      <label>نام پدر</label>
+      <input type="text" formControlName='FatherName' class="form-control" [ngClass]="{ 'is-invalid':form.FatherName.errors }">
+      <div class="invalid-feedback"   *ngIf='form.FatherName.invalid else ReciveMemberRegNameFather'  >
+
+        <div *ngIf='form.FatherName.errors.required'>اضافه کردن نام پدر اجباریست</div>
+        <div *ngIf="form.FatherName.errors.minlength">نام پدر باید بیشتر از 3 کاراکتر باشد</div>
+
+
+        </div>
+
+
+
+        <ng-template class="valid-feedback" #ReciveMemberRegNameFather>
+            <p style="color: green;">آفرین</p>
+      </ng-template>
+    </div>
+    <div class="form-group">
+      <label>نام کاربری</label>
+      <input type="text" formControlName='UserName' class="form-control" [ngClass]="{ 'is-invalid':form.UserName.errors }">
+      <div class="invalid-feedback"   *ngIf='form.UserName.invalid else ReciveMemberRegUserName'  >
+
+        <div *ngIf='form.UserName.errors.required'>اضافه کردن نام کاربری اجباریست</div>
+        <div *ngIf="form.UserName.errors.minlength">نام کاربری باید بیشتر از 3 کاراکتر باشد</div>
+
+
+        </div>
+
+
+
+        <ng-template class="valid-feedback" #ReciveMemberRegUserName>
+            <p style="color: green;">آفرین</p>
+      </ng-template>
+    </div>
+    <div class="form-group">
+      <label> رمز عبور</label>
+      <input type="text" formControlName='Password' class="form-control" [ngClass]="{ 'is-invalid':form.Password.errors }">
+      <div class="invalid-feedback"   *ngIf='form.Password.invalid else ReciveMemberRegPassword'  >
+
+        <div *ngIf='form.Password.errors.required'>اضافه کردن رمز عبور اجباریست</div>
+        <div *ngIf="form.Password.errors.minlength">رمز عبور باید بیشتر از سه کاراکتر باشد</div>
+
+
+        </div>
+
+
+
+        <ng-template class="valid-feedback" #ReciveMemberRegPassword>
+            <p style="color: green;">آفرین</p>
+      </ng-template>
+    </div>
+    <div class="form-group mb-0">
+      <label>تصویر</label>
+      <input type="file"
+      (change)="onFileChange($event)"
+       class="form-control"
+       id="Photo"
+         formControlName='Photo'>
+
+         <img [src]="imageSrc" *ngIf="imageSrc" style="height: 150px; width:250px">
+      <div class="invalid-feedback">
+
+      </div>
+     
+    </div>
+    <div class="card-body">
+   <div class="form-group">
+      <label> سطح دسترسی</label>
+        <br><br>
+      
+   
+          
+        <div class="form-control">
+          <input id="Admin"  type="radio"   value="Admin" name="Role" formControlName="Role" >
+          <label     for="male">کاربر ویژه</label>
+       </div>
+       <br>
+    
+       <div class="form-control"> 
+          <input id="User" dir="rtl" type="radio"  value="User" name="Role" formControlName="Role">
+          <label   for="female">کاریر معمولی</label>
+       </div>
+         
+      </div > 
+  
+    
+    
+  
+  </div>
+
+  </div>
+  <div class="card-footer text-right">
+    <button class="btn btn-primary">ذخیره</button>
+  </div>
+  </div>
+
+</mat-dialog-content>
+</form>
+<mat-dialog-actions>
+  <button class="mat-raised-button"  mat-button mat-dialog-close>لغو</button>
+  <div class="card-footer text-right">
+
+  </div>
+</mat-dialog-actions>
+

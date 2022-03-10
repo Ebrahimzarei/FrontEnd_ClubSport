@@ -1,0 +1,80 @@
+<form [formGroup]='ReciveSettingSport' (ngSubmit)="PostDataSettingSport(ReciveSettingSport)">
+  <div class="card-header">
+    <h4>تنظیمات باشگاه</h4>
+  </div>
+
+  <div class="card-body">
+    <div class="form-group">
+      <label>نام باشگاه ورزشی</label>
+      <input type="text" class="form-control "  formControlName="SettingNameClub" [ngClass]="{ 'is-invalid':f.SettingNameClub.errors }">
+      <div class="invalid-feedback"   *ngIf='f.SettingNameClub.invalid else ReciveSettingNameClub'  >
+
+        <div *ngIf='f.SettingNameClub.errors.required'>اضافه کردن خدمات ورزشی اجباریست</div>
+        <div *ngIf="f.SettingNameClub.errors.minlength">خدمات ورزشی باید بیشتر از 5 کاراکتر باشد</div>
+
+
+        </div>
+
+
+
+        <ng-template class="valid-feedback" #ReciveSettingNameClub>
+            <p style="color: green;">آفرین</p>
+      </ng-template>
+    </div>
+    <div class="form-group">
+      <label>ثبت اخبار</label>
+      <input type="text" class="form-control " [ngClass]="{ 'is-invalid':f.SettingNewsClub.errors }" formControlName="SettingNewsClub">
+      <div class="invalid-feedback"   *ngIf='f.SettingNewsClub.invalid else ReciveSettingNewsClub'  >
+
+        <div *ngIf='f.SettingNewsClub.errors.required'>  ثبت اخبار ورزشی اجباریست</div>
+        <div *ngIf="f.SettingNewsClub.errors.minlength">اخبار ورزشی باید بیشتر از 5 کاراکتر باشد</div>
+
+
+        </div>
+
+
+
+        <ng-template class="valid-feedback" #ReciveSettingNewsClub>
+            <p style="color: green;">آفرین</p>
+      </ng-template>
+    </div>
+    <!-- <div class="form-group">
+      <label>تاریخ ثبت اخبار</label>
+      <input type="text" class="form-control is-valid" formControlName="SettingDateClub">
+      <div class="valid-feedback">
+        آفرین!
+      </div>
+    </div> -->
+
+
+    <div class="card-body">
+      <div class="form-group">
+        <label>لوگو باشگاه ورزشی</label>
+
+        <input type="file"
+        (change)="onFileChange($event)"
+         class="form-control is-invalid"
+         id="SettingPhotoClub"
+           formControlName='SettingPhotoClub'>
+           <img [src]="imageSrc" *ngIf="imageSrc" style="height: 150px; width:250px">
+      </div>
+
+    <br>
+
+    <div class="card-body">
+
+
+  <div class="card-body">
+    <div class="form-group">
+
+
+
+
+
+  <div class="card-footer text-right">
+    <button class="btn btn-primary">ذخیره</button>
+  </div>
+
+  <div class="section-body">
+ <app-list-settingclubsport></app-list-settingclubsport>
+  </div>

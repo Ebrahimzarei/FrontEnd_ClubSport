@@ -1,0 +1,73 @@
+<div *ngIf="isDone ==true;else elseBlock" >
+  <div class="loaders"></div>
+</div>
+<ng-template #elseBlock>
+  <div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+
+        <h4>رشته ورزشی</h4>
+      </div>
+      <div class="card-body">
+        <a  style="cursor: pointer;" class="badge badge-shadow badge-info"
+        target="_blank"
+                (click)="OnPrint()" >چاپ</a>
+                <a  style="cursor: pointer;" class="badge badge-shadow badge-info"
+                target="_blank"
+                        (click)="openPDF()" >PDF</a>
+        <div class="table-responsive" id="htmlData">
+          <table class="table table-striped" id="table-1">
+            <thead>
+              <tr >
+                <th class="text-center">
+                تعداد
+                </th>
+                <th>نام رشته</th>
+                <th>کد رشته</th>
+
+             
+
+                <th data-html2canvas-ignore="true">  </th>
+
+
+              </tr>
+            </thead>
+            <tbody  >
+
+              <tr *ngFor="let item of FieldList" >
+
+
+
+
+                <td >
+
+                 {{item.Id}}
+                </td>
+                <td>
+                  {{item.NameField}}
+                </td>
+                <td  >
+                  {{item.CodeSportField}}
+                </td>
+             
+
+
+                <td>
+                  <a  data-html2canvas-ignore="true" (click)="onEditEvent(item.Id)" style="cursor: pointer;" class="badge badge-warning badge-shadow" >ویرایش</a>
+                  <a  data-html2canvas-ignore="true" (click)="onDeleteEvent(item.Id)" style="cursor: pointer;" class="badge badge-info badge-shadow">   حذف</a>
+
+                </td>
+
+
+                <!-- <td><a href="#" class="btn btn-primary">جزئیات</a></td> -->
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</ng-template>
+

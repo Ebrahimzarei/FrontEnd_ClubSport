@@ -1,0 +1,178 @@
+
+  <form [formGroup]='ReciveEventSport' (ngSubmit)="PostData(ReciveEventSport)">
+    <div class="card-header">
+      <h4><b>رویداد ورزشی</b></h4>
+    </div>
+
+    <div class="card-body">
+      <div class="form-group">
+        <label>نام رویداد</label>
+        <input type="text" formControlName='NameEvent' class="form-control"  [ngClass]="{ 'is-invalid':f.NameEvent.errors }"   >
+        <div class="invalid-feedback"   *ngIf='f.NameEvent.invalid else ReciveNameEvent'  >
+
+          <div *ngIf='f.NameEvent.errors.required'>اضافه کردن نام رویداد اجباریست</div>
+  
+  
+          </div>
+          <ng-template class="valid-feedback" #ReciveNameEvent>
+            <p style="color: green;">آفرین</p>
+      </ng-template>
+      </div>
+    </div>
+
+    <div class="form-group mb-0">
+      <label>برنامه ورزشی</label>
+      <br>
+    
+        <div  style=" cursor:pointer;">
+  
+          <select formControlName='ProgramSportArray' class="form-control  form-select form-select-lg mb-3"  aria-label=".form-select-lg example">
+           
+            <option [ngValue]="null" disabled>انتخاب کنید</option>
+          
+            <option selected *ngFor="let ProgramSportArray of ProgramList" [ngValue]="ProgramSportArray.Id">
+            
+                {{ProgramSportArray.NameProgram}}
+
+             
+            </option>
+      
+          </select>
+             
+        
+    
+        </div>
+   
+
+    <br>
+    </div>
+
+    <div class="form-group mb-0">
+      <label> رشته ورزشی </label>
+      <br>
+      <div  style=" cursor:pointer;">
+  
+        <select formControlName='FieldSportArray' class="form-control  form-select form-select-lg mb-3"  aria-label=".form-select-lg example">
+         
+          <option [ngValue]="null" disabled>انتخاب کنید</option>
+        
+          <option selected *ngFor="let FieldSportArray of FieldSportList" [ngValue]="FieldSportArray.Id">
+          
+              {{FieldSportArray.NameField}}
+
+           
+          </option>
+    
+        </select>
+           
+      
+  
+      </div>
+    
+    </div>
+    <div class="form-group mb-0">
+      <label>انتخاب سالن ورزشی</label>
+      <br>
+      <div  style=" cursor:pointer;">
+  
+        <select formControlName='HallSportArray' class="form-control  form-select form-select-lg mb-3"  aria-label=".form-select-lg example">
+         
+          <option [ngValue]="null" disabled>انتخاب کنید</option>
+        
+          <option selected *ngFor="let HallSportArray of HallSportList" [ngValue]="HallSportArray.Id">
+          
+              {{HallSportArray.Name}}
+
+           
+          </option>
+    
+        </select>
+           
+      
+  
+      </div>
+    
+    </div>
+
+  
+
+      <br>
+   
+
+      <div class="card-body">
+        <div class="form-group">
+          <label> از تاریخ</label>
+
+          <input type="text" class="form-control is-valid" #datepickerFromDate id="ProgramSportFromDate" formControlName="FromDate"  >
+          <ng-persian-datepicker
+          [input]="datepickerFromDate"
+          [uiTheme]="'dark'"
+          [dateFormat]="'jYYYY-jMM-jDD'"
+          [timeEnable]="'false'"
+          [timeMeridian]="'false'"
+
+          ></ng-persian-datepicker>
+          <div class="invalid-feedback"   *ngIf="f.FromDate.touched && f.FromDate.invalid"  >
+
+            <div *ngIf="f.FromDate.errors.required">اضافه کردن از تاریخ اجباریست</div>
+          </div>
+          <div class="valid-feedback"   *ngIf="f.FromDate.valid"  >
+            آفرین
+          </div>
+          <div class="form-group">
+            <label> تا تاریخ</label>
+
+            <input type="text" class="form-control is-valid" #datepickerToDate id="ToDate" formControlName="ToDate" value="" >
+            <ng-persian-datepicker
+            [input]="datepickerToDate"
+            [uiTheme]="'dark'"
+            [dateFormat]="'jYYYY-jMM-jDD'"
+            [timeEnable]="'false'"
+            [timeMeridian]="'false'"
+
+            ></ng-persian-datepicker>
+            <div class="invalid-feedback"   *ngIf="f.ToDate.touched && f.ToDate.invalid"  >
+
+              <div *ngIf="f.ToDate.errors.required">اضافه کردن تا تاریخ اجباریست</div>
+            </div>
+            <div class="valid-feedback"   *ngIf="f.ToDate.valid"  >
+              آفرین
+            </div>
+        </div>
+
+    </div>
+
+      </div>
+      <div class="card-body">
+        <div class="form-group">
+          <label> نام  داور</label>
+          <input type="text" class="form-control is-valid" formControlName="NameCoach" [ngClass]="{ 'is-invalid':f.NameCoach.errors }" >
+          <div class="invalid-feedback"   *ngIf="f.NameCoach.invalid else ReciveNameCoach"   >
+            <div *ngIf="f.NameCoach.errors.required">اضافه کردن نام داور اجباریست</div>
+  
+            <div *ngIf="f.NameCoach.errors.minlength">نام داور بایستی بیشتر از 15 کاراکتر باشد</div>
+          </div>
+
+     
+
+          <ng-template class="valid-feedback" #ReciveNameCoach>
+            <!-- <div class="valid-feedback"    > -->
+  
+              <p style="color: green;">آفرین</p>
+               <!-- </div> -->
+        </ng-template>
+        </div>
+        
+     
+
+
+
+    </div>
+    <div class="card-footer text-right">
+      <button class="btn btn-primary">ذخیره</button>
+    </div>
+   </form>
+<div class="section-body">
+  <app-list-eventsport></app-list-eventsport>
+  </div>
+

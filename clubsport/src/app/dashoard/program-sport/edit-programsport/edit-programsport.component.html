@@ -1,0 +1,231 @@
+<h2 mat-dialog-title class="card-header">ویرایش برنامه ورزشی</h2>
+<form [formGroup]='ReciveProgramSport' (ngSubmit)="PostDataProgramSport(ReciveProgramSport)">
+  <mat-dialog-content>
+  <div class="card-header">
+    <h4>عملیات-برنامه ورزشی</h4>
+  </div>
+  <div>
+    <div class="card-body">
+      <div class="form-group">
+        <label>نام برنامه ورزشی</label>
+      
+        <input type="text" class="form-control" formControlName='NameProgramSport' [ngClass]="{ 'is-invalid':f.NameProgramSport.errors }"  >
+        <div class="invalid-feedback"   *ngIf='f.NameProgramSport.invalid else ReciveNameProgramSport'  >
+
+          <div *ngIf='f.NameProgramSport.errors.required'>اضافه کردن نام برنامه ورزشی اجباریست</div>
+          <div *ngIf="f.NameProgramSport.errors.minlength">نام برنامه ورزشی باید بیشتر از 7 کاراکتر باشد</div>
+
+
+
+
+
+
+
+      </div>
+      <ng-template class="valid-feedback" #ReciveNameProgramSport>
+        <p style="color: green;">آفرین</p>
+  </ng-template>
+      </div>
+    </div>
+
+
+
+    <div class="form-group mb-0">
+      <label>انتخاب سالن ورزشی</label>
+      <br>
+      <div >
+ 
+  
+         <div >
+          <div  style=" cursor:pointer;">
+    
+            <select formControlName='HallSportArray' class="form-control  form-select form-select-lg mb-3"  aria-label=".form-select-lg example">
+             
+              <option [ngValue]="null" disabled>انتخاب کنید</option>
+            
+              <option selected *ngFor="let HallSportArray of H_Sport" [ngValue]="HallSportArray.Id">
+              
+                  {{HallSportArray.Name}}
+
+               
+              </option>
+        
+            </select>
+               
+          
+      
+          </div>
+       
+      </div>  
+      </div>
+      <div class="invalid-feedback">
+
+      </div>
+    </div>
+     <div class="form-group mb-0">
+      <label>انتخاب رشته ورزشی</label>
+      <br>
+      <div class="dropdown d-inline mr-2">
+    
+        <div  style=" cursor:pointer;">
+    
+          <select formControlName='FieldSportArray' class="form-control  form-select form-select-lg mb-3"  aria-label=".form-select-lg example">
+           
+            <option [ngValue]="null" disabled>انتخاب کنید</option>
+          
+            <option selected *ngFor="let FieldSportArray of F_Sport" [ngValue]="FieldSportArray.Id">
+            
+                {{FieldSportArray.NameField}}
+
+             
+            </option>
+      
+          </select>
+             
+        
+    
+        </div>
+
+      </div>
+      <div class="invalid-feedback">
+
+      </div>
+    </div>  
+
+      <div class="form-group mb-0">
+      <label>انتخاب کاربر ورزشی</label>
+      <br>
+      <div class="dropdown d-inline mr-2">
+    
+        <div  style=" cursor:pointer;">
+    
+          <select formControlName='MemberSportArray' class="form-control  form-select form-select-lg mb-3"  aria-label=".form-select-lg example">
+           
+            <option [ngValue]="null" disabled>انتخاب کنید</option>
+          
+            <option selected *ngFor="let MemberSportArray of M_Sport" [ngValue]="MemberSportArray.Id">
+            
+                {{MemberSportArray.FullName}}
+
+             
+            </option>
+      
+          </select>
+             
+        
+    
+        </div>
+
+      </div>
+      <div class="invalid-feedback">
+
+      </div>
+    </div>  
+
+      <br>
+   
+
+      <div class="card-body">
+        <div class="form-group">
+          <label> از تاریخ</label>
+
+          <input type="text" class="form-control is-valid" #datepickerFromDate id="ProgramSportFromDate" formControlName="ProgramSportFromDate"  >
+          <ng-persian-datepicker
+          [input]="datepickerFromDate"
+          [uiTheme]="'dark'"
+          [dateFormat]="'jYYYY-jMM-jDD'"
+          [timeEnable]="'false'"
+          [timeMeridian]="'false'"
+
+          ></ng-persian-datepicker>
+
+          <div class="form-group">
+            <label> تا تاریخ</label>
+
+            <input type="text" class="form-control is-valid" #datepickerToDate id="ProgramSportToDate" formControlName="ProgramSportToDate"  >
+            <ng-persian-datepicker
+            [input]="datepickerToDate"
+            [uiTheme]="'dark'"
+            [dateFormat]="'jYYYY-jMM-jDD'"
+            [timeEnable]="'false'"
+            [timeMeridian]="'false'"
+
+            ></ng-persian-datepicker>
+        </div>
+
+    </div>
+
+      </div>
+      <div class="card-body">
+        <div class="form-group">
+          <label> جزییات</label>
+          <input type="text" class="form-control" [ngClass]="{ 'is-invalid':f.ProgramSportDetails.errors }" formControlName='ProgramSportDetails'  >
+          <div class="invalid-feedback"   *ngIf='f.ProgramSportDetails.invalid else ReciveNameProgramSportDetails'  >
+
+            <div *ngIf='f.ProgramSportDetails.errors.required'>اضافه کردن جزییات ورزشی اجباریست</div>
+            <div *ngIf="f.ProgramSportDetails.errors.minlength">جزییات برنامه ورزشی باید بیشتر از 7 کاراکتر باشد</div>
+
+
+            </div>
+
+
+
+            <ng-template class="valid-feedback" #ReciveNameProgramSportDetails>
+                <p style="color: green;">آفرین</p>
+          </ng-template>
+        </div>
+          <div class="form-group" >
+            <label> روزهای هفته</label>
+        
+          <select  formControlName="ProgramSportDate" name="ProgramSportDate"        class="form-control " style="height:fit-content">
+            <option [value]="item.id" *ngFor="let item of items">
+                {{item.name}}
+            </option>
+        </select>
+
+
+          <div *ngIf="f.ProgramSportDate.touched && f.ProgramSportDate.invalid" class="alert alert-danger">
+              <div *ngIf="f.ProgramSportDate.errors.required">انتخاب روز اجباریست</div>
+          </div>
+         
+   
+            
+
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <label> هزینه غیبت</label>
+            <input type="text" class="form-control" [ngClass]="{ 'is-invalid':f.ProgramSportAbsence.errors }" formControlName='ProgramSportAbsence' >
+            <div class="invalid-feedback"   *ngIf='f.ProgramSportAbsence.invalid else ReciveProgramSportAbsence'  >
+
+              <div *ngIf='f.ProgramSportAbsence.errors.required'>اضافه کردن هزینه غیبت اجباریست</div>
+              <div *ngIf="f.ProgramSportAbsence.errors.minlength">  هزینه غیبت  باید بیشتر از 2 کاراکتر باشد</div>
+
+
+              </div>
+
+
+
+              <ng-template class="valid-feedback" #ReciveProgramSportAbsence>
+                  <p style="color: green;">آفرین</p>
+            </ng-template>
+
+
+    </div>
+
+      <div class="card-footer text-right">
+       <button type="submit" class="btn btn-primary">ذخیره</button>
+      </div>
+
+    </div>
+
+
+
+    </div>
+  </div>
+
+  </mat-dialog-content>
+ </form>
+ <mat-dialog-actions>
+  <button class="mat-raised-button"  mat-button mat-dialog-close>لغو</button>
+</mat-dialog-actions>

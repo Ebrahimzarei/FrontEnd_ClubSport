@@ -1,0 +1,238 @@
+<div id="app">
+  <div class="main-wrapper main-wrapper-1">
+    <div class="navbar-bg"></div>
+    <nav class="navbar navbar-expand-lg main-navbar sticky">
+      <div class="form-inline mr-auto">
+        <ul class="navbar-nav mr-3">
+          <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg
+                collapse-btn"> <i data-feather="align-justify"></i></a></li>
+
+
+        </ul>
+      </div>
+
+      <ul class="navbar-nav navbar-right">
+
+        <li class="dropdown"><a href="#" data-toggle="dropdown"
+            class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+
+            <div *ngIf="PhotoBase64!=null else RecivePhoto">
+              <img alt="تصویر" [src]="transform()" class="user-img-radious-style">
+
+            </div>
+            <ng-template class="valid-feedback" #RecivePhoto>
+              <!-- <div class="valid-feedback"    > -->
+
+              <img alt="تصویر" src="assets/img/user.png" class="user-img-radious-style">
+              <!-- </div> -->
+            </ng-template>
+
+
+
+
+
+
+            <span class="d-sm-none d-lg-inline-block"></span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right pullDown">
+            <div class="dropdown-title">{{UserName}} سلام</div>
+
+
+            <a [routerLink]="['/header/SettingClubSport']" class="dropdown-item has-icon"> <i class="fas fa-cog"></i>
+              تنظیمات
+            </a>
+            <div class="dropdown-divider"></div>
+            <a [routerLink]="['/login']" class="dropdown-item has-icon text-danger"> <i class="fas fa-sign-out-alt"></i>
+              خروج
+            </a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+    <div class="main-sidebar sidebar-style-2">
+      <aside id="sidebar-wrapper">
+        <div class="sidebar-brand">
+          <a [routerLink]="['/header']"> <img alt="تصویر" src="assets/img/logo.png" class="header-logo"> <span
+              class="logo-name">زیوی</span>
+          </a>
+        </div>
+        <div class="sidebar-user">
+          <div class="sidebar-user-picture">
+            <div *ngIf="PhotoBase64!=null else RecivePhoto">
+              <img alt="تصویر" [src]="transform()">
+              <!-- data:image/png;base64, -->
+
+
+              <!-- <img alt="تصویر" [src]="this.PhotoBase64">  -->
+              <!-- <img alt="تصویر" src="assets/img/user.png"> -->
+            </div>
+            <ng-template class="valid-feedback" #RecivePhoto>
+              <!-- <div class="valid-feedback"    > -->
+
+              <img alt="تصویر" src="assets/img/user.png">
+              <!-- </div> -->
+            </ng-template>
+
+
+          </div>
+
+          <div class="sidebar-user-details">
+            <div class="user-name">{{UserName}}</div>
+            <div class="user-role">{{Role}}</div>
+          </div>
+        </div>
+        <ul class="sidebar-menu">
+          <li class="menu-header">اصلی</li>
+          <li class="dropdown active">
+            <a [routerLink]="['/header']" class="menu-toggle nav-link has-dropdown"><i
+                data-feather="monitor"></i><span>اطلاعات پایه</span></a>
+            <ul class="dropdown-menu">
+              <li routerLinkActive="router-link-active"><a class="nav-link" routerLink='MemberRegister'> تعریف اعضا</a>
+              </li>
+              <li><a class="nav-link" [routerLink]="['MemberSport']"> اعضا ورزشی-ورزشکار</a></li>
+              <li><a class="nav-link" [routerLink]="['FieldSport']"> رشته ورزشی</a></li>
+              <li><a class="nav-link" [routerLink]="['HallSport']"> سالن ورزشی</a></li>
+
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a [routerLink]="['SettingClubSport']" class="menu-toggle nav-link has-dropdown"><i
+                data-feather="briefcase"></i><span>تنظیمات</span></a>
+
+          </li>
+          <li class="dropdown">
+            <a [routerLink]="['ProgramSport']" class="menu-toggle nav-link has-dropdown"><i
+                data-feather="command"></i><span>برنامه ورزشی</span></a>
+
+          </li>
+          <li class="dropdown">
+            <a [routerLink]="['EventSport']" class="menu-toggle nav-link has-dropdown"><i
+                data-feather="copy"></i><span>رویداد ورزشی</span></a>
+
+          </li>
+          <li class="menu-header">عملیات</li>
+          <li class="dropdown">
+            <a [routerLink]="['ServicesSport']" class="menu-toggle nav-link has-dropdown"><i
+                data-feather="layout"></i><span> خدمات ورزشی</span></a>
+
+          </li>
+          <li class="">
+            <a routerLink='SelectRole' class="menu-toggle nav-link has-dropdown"><i data-feather="grid"></i><span>سطح
+                دسترسی کاربران</span></a>
+
+          </li>
+          <li><a class="nav-link" href="#"><i data-feather="file"></i><span>حضور غیاب ورزشکاران</span></a></li>
+          <li class="menu-header">راهنمایی</li>
+          <li class="dropdown">
+            <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="layout"></i><span>راهنمایی</span></a>
+
+          </li>
+
+
+
+
+
+        </ul>
+      </aside>
+    </div>
+    <!-- Main Content -->
+    <div class="main-content">
+      <section class="section">
+        <ul class="breadcrumb breadcrumb-style ">
+          <li class="breadcrumb-item">
+            <h4 class="page-title m-b-0">باشگاه ورزشی</h4>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="#">
+              <i class="fas fa-home"></i></a>
+          </li>
+          <li class="breadcrumb-item active">پنل باشگاه ورزشی</li>
+        </ul>
+        <div class="row">
+          <div class="col-lg-3 col-sm-6">
+            <div class="card">
+              <div class="card-statistic-4">
+                <div class="info-box7-block">
+                  <h6 class="m-b-20 text-right">تعداد سالن ورزشی</h6>
+                  <h4 class="text-right"><i
+                      class="fas fa-cart-plus pull-left bg-indigo c-icon"></i><span>{{CountHall }}</span>
+                  </h4>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6">
+            <div class="card">
+              <div class="card-statistic-4">
+                <div class="info-box7-block">
+                  <h6 class="m-b-20 text-right"> تعداد ورزشکاران</h6>
+                  <h4 class="text-right"><i
+                      class="fas fa-users pull-left bg-cyan c-icon"></i><span>{{CountMemberSport }}</span>
+                  </h4>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6">
+            <div class="card">
+              <div class="card-statistic-4">
+                <div class="info-box7-block">
+                  <h6 class="m-b-20 text-right">تعداد برنامه های ورزشی</h6>
+                  <h4 class="text-right"><i
+                      class="fas fa-ticket-alt pull-left bg-deep-orange c-icon"></i><span>{{CountProgramSport }}</span>
+                  </h4>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6">
+            <div class="card">
+              <div class="card-statistic-4">
+                <div class="info-box7-block">
+                  <h6 class="m-b-20 text-right"> کل رویداد های ورزشی</h6>
+           
+                  <h4 class="text-right"><i
+                      class="fas fa-ticket-alt pull-left bg-deep-orange c-icon"></i><span>{{CountEventSport }}</span>
+                  </h4>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xl-8 col-md-12 col-lg-8">
+            <div class="card">
+              <!-- <div class="card-header">
+                <h4>نمودار درآمد</h4>
+              </div> -->
+              <div class="card-body">
+
+                <router-outlet></router-outlet>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+
+
+      </section>
+
+    </div>
+
+    <footer class="main-footer">
+      <div class="footer-left">
+        حق چاپ © 1400 <div class="bullet"></div>
+      </div>
+      <div class="footer-right">
+      </div>
+    </footer>
+  </div>
+
+</div>
